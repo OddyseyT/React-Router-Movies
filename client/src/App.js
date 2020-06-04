@@ -17,6 +17,7 @@ const App = () => {
       axios
         .get('http://localhost:5000/api/movies')
         .then(response => {
+          console.log(response);
           setMovieList(response.data);
         })
         .catch(error => {
@@ -32,13 +33,20 @@ const App = () => {
 
   return (
     <div>
-      <SavedList list={savedList} />
-      <MovieList />
-      <div>
-      <Route path="/" component={MovieList} />
-      <Route path="/movies/:movieID"></Route>
+          <SavedList list={savedList} />
+      
+     
+  
+      
+      <Route path="/" Component={MovieList}>
+        <MovieList movies={movieList}/>
+        </Route>
+        <Route path="/movies/:id"> 
+      <Movie movies={movieList}/>
+      </Route>
+
+      
       </div>
-    </div>
   );
 };
 
