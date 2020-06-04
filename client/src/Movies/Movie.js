@@ -11,13 +11,14 @@ import {
 const Movie = (props) => {
   const [movie, setMovie] = useState();
   console.log("useParams", useParams());
-  const movieID = useParams().id;
+  const [movieID, setMovieID]=useState("")
+  // const movieChoice = useParams().id;
 
-  const id = props.movies.find(item => item.id === Number(movieID));
-
+  // const id = Number(movieChoice);
+const {id} = useParams();
  
   useEffect(() => {
-    
+    console.log(id)
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
@@ -26,12 +27,13 @@ const Movie = (props) => {
         .then(response => {
           console.log(response.data);
           setMovie(response.data);
+          
         })
         .catch(error => {
           console.error(error);
         });
 
-  },[movie]);
+  },[movieID]);
   
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {

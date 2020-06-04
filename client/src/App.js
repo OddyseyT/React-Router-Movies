@@ -38,11 +38,11 @@ const App = () => {
      
   
       
-      <Route path="/" Component={MovieList}>
+      <Route exact path="/" Component={MovieList}>
         <MovieList movies={movieList}/>
         </Route>
         <Route path="/movies/:id"> 
-      <Movie movies={movieList}/>
+      <Movie />
       </Route>
 
       
